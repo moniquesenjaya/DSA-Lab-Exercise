@@ -3,57 +3,74 @@
 
 using namespace std;
 
+// Its still doing an endless loop, im not sure how to debug this, im sorry, i have tried using your code too
+
+int selectedMenu() {
+    int choice;
+
+    cout << "Welcome to My Database.\n";
+    cout << "===========================.\n";
+    cout << "1. INSERT Item\n";
+    cout << "2. REPLACE Item\n";
+    cout << "3. DELETE Item \n";
+    cout << "4. PRINT Item \n";
+    cout << "5. Exit \n";
+    cout << "Enter an option: ";
+    cin >> choice;
+
+    return choice;
+}
+
+
+void start() {
+    int num;
+    int loc;
+
+    while (true) {
+        int choice = selectedMenu();
+        switch (choice) {
+        case 1:
+            cout << "Enter an integer: ";
+            cin >> num;
+            insert(num);
+            break;
+        case 2:
+            cout << "Enter the position (index) to be replaced: ";
+            cin >> loc;
+            cout << "Enter a new data: ";
+            cin >> num;
+            replaceAt(loc, num);
+            break;
+        case 3:
+            cout << "Enter the data to remove: ";
+            cin >> num;
+            remove(num);
+            break;
+        case 4:
+            print();
+            break;
+        case 5:
+            exit(0);
+            break;
+        default:
+            cout << "Menu unavailable...\n";
+            break;
+        }
+    cout << "\n\n";
+    }
+}
+
 int main(){
     // initializing variables
-    int new_entry;
-    int loc;
-    int delete_entry;
     int value_num;
     bool running = true;
 
-    cout << "How many values do you want to store?" << endl;
+    cout << "How many values do you want to store? ";
     cin >> value_num;
 
     createList(value_num);
     
-    while (running == true){
-        cout << "Choose what is to be done?" << endl;
-        cout << "1. INSERT new data" << endl;
-        cout << "2. REPLACE existing data with a new one" << endl;
-        cout << "3. DELETE existing data" << endl;
-        cout << "4. PRINT data" << endl;
-        cout << "5. Finish Program" << endl;
+    selectedMenu();
 
-        int choice;
-        cin >> choice;
-
-        switch(choice) {
-            case '1':
-                cout << "Enter new data:" << endl;
-                cin >> new_entry;
-                insert(new_entry);
-                break;
-            case '2':
-                cout << "Input location of item to be replaced:" << endl;
-                cin >> loc;
-                cout << "Enter new data";
-                cin >> new_entry;
-                replaceAt(loc, new_entry);
-                break;
-            case '3':
-                cout << "Enter value to be deleted:" << endl;
-                cin >> delete_entry;
-                remove(delete_entry);
-                break;
-            case '4':
-                print();
-                break;
-            case '5':
-                running = false;
-                break;
-    }
-    if (running == false){
-        break;
-    }
-}
+    start();
 }

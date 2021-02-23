@@ -41,11 +41,19 @@ int main(){
         case 3:
             cout << "Result of " << num1 << "* " << num2 << " is " << multiply(num1, num2);
             break;
-        case 4:
-            cout << "Result of " << num1 << "/ " << num2 << " is " << divide(num1, num2);
-            break;
+        case 4: // Added try and except to catch the error
+            try { 
+                    cout << "Result of " << num1 << "/ " << num2 << " is " << divide(num1, num2);
+                    break;
+
+                }catch (runtime_error& e) { 
+                    cout << "Exception occurred" << endl 
+                    << e.what(); 
+                    break;
+                }
         default:
             cout << "Wrong Option" << endl;
+            break;
 }
 
 
@@ -61,5 +69,10 @@ double multiply(double a, double b){
     return a*b;
 }
 double divide(double a, double b){
+
+    if (b == 0) { 
+        throw runtime_error("Math error: Attempted to divide by Zero\n"); 
+    } // Added if function to throw runtine error
+
     return a/b;
 }
