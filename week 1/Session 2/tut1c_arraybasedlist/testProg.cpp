@@ -69,8 +69,6 @@ int main(){
     cin >> value_num;
 
     createList(value_num);
-    
-    selectedMenu();
 
     start();
 }

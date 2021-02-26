@@ -1,6 +1,17 @@
 {
     "files.associations": {
         "iostream": "cpp",
-        "ostream": "cpp"
-    }
+        "ostream": "cpp",
+        "new": "cpp",
+        "unordered_map": "cpp",
+        "unordered_set": "cpp",
+        "cstring": "cpp",
+        "list": "cpp",
+        "*.tcc": "cpp",
+        "cwchar": "cpp",
+        "stdexcept": "cpp",
+        "system_error": "cpp",
+        "type_traits": "cpp"
+    },
+    "C_Cpp.errorSquiggles": "Disabled"
 }
