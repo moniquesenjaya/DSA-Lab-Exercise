@@ -17,6 +17,7 @@ public:
 	int delete_element();
 	int peek();
 	void display();
+	void move_next();
 	
 };
 
@@ -98,5 +99,11 @@ void Queue::display()
 				cout << "\t " << queue[i];
 		}
 	}
+}
+
+void Queue::move_next()
+{
+	front++;
+	rear++;
 }
 

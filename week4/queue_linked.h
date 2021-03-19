@@ -23,9 +23,10 @@ public:
 	Queue();
 	void create_queue();
 	queue* insert(int);
-	queue* delete_element();
+	int delete_element();
 	queue* display();
 	int peek();
+	void move_next();
 
 };
 
@@ -74,20 +75,22 @@ queue* Queue::display()
 	return q;
 }
 
-queue* Queue::delete_element()
+int Queue::delete_element()
 {
 	node* ptr;
+	int val;
 	ptr = q -> front;
 
 	if (ptr = nullptr){
 		cout << "UNDERFLOW"<< endl;
 	}else {
+		val = q -> front -> data;
         q -> front = q -> front -> next;
         delete ptr;
     }
 	delete ptr;
 
-	return q;
+	return val;
 }
 int Queue::peek()
 {
@@ -98,5 +101,10 @@ int Queue::peek()
 	}
 	else
 		return q->front->data;
+}
+
+void Queue::move_next(){
+	q -> front = q->front->next;
+	q -> rear = q->rear->next;
 }
 

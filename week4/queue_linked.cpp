@@ -23,7 +23,8 @@ int main()
 				myqueue.q = myqueue.insert(val);
 				break;
 		case 2:
-				myqueue.q = myqueue.delete_element();
+				val =  myqueue.delete_element();
+				cout << "The element deleted is: " << val;
 				break;
 		case 3:
 				val = myqueue.peek();
@@ -31,7 +32,7 @@ int main()
 					cout << "\n The value at front of queue is : " << val;
 				break;
 		case 4:
-				myqueue.q = myqueue.display();
+				myqueue.display();
 				break;
 		}
 	}while(option != 5);

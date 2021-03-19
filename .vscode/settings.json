@@ -21,7 +21,8 @@
         "utility": "cpp",
         "deque": "cpp",
         "forward_list": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "random": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }
