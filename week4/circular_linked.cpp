@@ -23,7 +23,7 @@ int main()
     cout<< "Eliminated in order: ";
 
     while (n > 1){
-        for (i=1; i <= m; i++){
+        for (i=1; i < m; i++){
             myQueue.move_next();
             
         }

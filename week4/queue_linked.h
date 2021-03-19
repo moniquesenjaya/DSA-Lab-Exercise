@@ -52,6 +52,7 @@ queue* Queue::insert(int val)
 		q -> rear -> next = ptr;
 		q -> rear = ptr;
 		q -> rear -> next = nullptr;
+		q -> rear -> next = q -> front;
 	}
 	return q;
 }
@@ -86,6 +87,7 @@ int Queue::delete_element()
 	}else {
 		val = q -> front -> data;
         q -> front = q -> front -> next;
+		q -> rear -> next = q -> front;
         delete ptr;
     }
 	delete ptr;
