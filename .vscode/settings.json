@@ -22,7 +22,8 @@
         "deque": "cpp",
         "forward_list": "cpp",
         "vector": "cpp",
-        "random": "cpp"
+        "random": "cpp",
+        "initializer_list": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }

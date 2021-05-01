@@ -11,29 +11,27 @@ vector<int> breadth_first_search(int adj[][DIM], bool visited[], int start)
 {
 	vector<int> queue_items;
 	vector<int> seq_visit;
+	// vector<int>::iterator i;
 	Queue q;
 	q.insert(start);
-
-	list<int>::iterator i;
 
 	while(!q.empty())
 	{
 		// your code here		
-		start = q.front();
+		start = q.peek();
         cout << start << " ";
         q.delete_element();
 
-		for (i = adj[start].begin(); i != adj[start].end(); ++i)
+		for (int i: adj[start])
         {
-            if (!visited[*i])
+            if (!visited[i])
             {
-                visited[*i] = true;
-                q.insert(*i);
+                visited[i] = true;
+                q.insert(i);
             }
         }
 	}
 	return seq_visit;
-	
 }
 
 void display_bfs(vector<int> bfs_sequence){
