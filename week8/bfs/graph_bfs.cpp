@@ -3,7 +3,7 @@
 #include <iostream>
 #include "queue.cpp"
 #include <vector>
-#define DIM 8
+#define DIM 5
 
 using namespace std;
 
@@ -15,21 +15,28 @@ vector<int> breadth_first_search(int adj[][DIM], bool visited[], int start)
 	Queue q;
 	q.insert(start);
 
+	visited[start] = true;
+
 	while(!q.empty())
 	{
 		// your code here		
 		start = q.peek();
-        cout << start << " ";
         q.delete_element();
 
-		for (int i: adj[start])
+		for (int i = 0; i < DIM; i++)
         {
-            if (!visited[i])
-            {
-                visited[i] = true;
-                q.insert(i);
-            }
+			if (adj[start][i] == 1)
+			{
+
+				if (!visited[i])
+				{
+					visited[i] = true;
+					q.insert(i);
+				}
+
+			}
         }
+		seq_visit.push_back(start);
 	}
 	return seq_visit;
 }
@@ -49,7 +56,7 @@ int main()
 	
 	bool visited[DIM] = {false};
 	cout << "\n The graph in the adjacency matrix is : \n";
-	/*
+	
 	int adj[DIM][DIM] = {
 		{0, 1, 0, 1, 0},
 		{1, 0, 0, 0, 0},
@@ -57,17 +64,19 @@ int main()
 		{1, 0, 0, 0, 1},
 		{0, 0, 1, 1, 0}
 	};
-	*/
-	int adj[DIM][DIM] = {
-		{0, 1, 0, 1, 0, 1, 0, 0},
-		{1, 0, 1, 0, 1, 0, 0, 0},
-		{0, 1, 0, 1, 1, 0, 0, 0},
-		{0, 0, 1, 0, 0, 0, 1, 1},
-		{0, 1, 1, 0, 0, 0, 0, 0},
-		{1, 0, 0, 0, 0, 0, 1, 0},
-		{0, 0, 0, 1, 1, 1, 0, 0},
-		{0, 0, 0, 1, 0, 0, 0, 0}
-	};
+
+	
+	
+	// int adj[DIM][DIM] = {
+	// 	{0, 1, 0, 1, 0, 1, 0, 0},
+	// 	{1, 0, 1, 0, 1, 0, 0, 0},
+	// 	{0, 1, 0, 1, 1, 0, 0, 0},
+	// 	{0, 0, 1, 0, 0, 0, 1, 1},
+	// 	{0, 1, 1, 0, 0, 0, 0, 0},
+	// 	{1, 0, 0, 0, 0, 0, 1, 0},
+	// 	{0, 0, 0, 1, 1, 1, 0, 0},
+	// 	{0, 0, 0, 1, 0, 0, 0, 0}
+	// };
 	
 
 	for(int i = 0; i < DIM; i++)
