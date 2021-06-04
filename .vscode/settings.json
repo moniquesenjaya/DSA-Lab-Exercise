@@ -23,7 +23,8 @@
         "forward_list": "cpp",
         "vector": "cpp",
         "random": "cpp",
-        "initializer_list": "cpp"
+        "initializer_list": "cpp",
+        "iosfwd": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }
