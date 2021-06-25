@@ -20,7 +20,72 @@ Node* newNode(int val)
   
     return temp;
 }
-  
+
+// function to find out middle element
+struct Node* middle(Node* start, Node* last)
+{
+    cout << "first " << start->data;
+    if (start == NULL)
+        return NULL;
+ 
+    struct Node* slow = start;
+    struct Node* fast = start -> next;
+    struct Node* tempLast = fast;
+ 
+    while (fast != last)
+    {
+        tempLast = fast;
+        fast = fast -> next;
+        if (fast != last)
+        {
+            slow = slow -> next;
+            fast = fast -> next;
+        }
+    }
+    if (tempLast!=NULL){
+        cout << " last " << tempLast->data;
+    }   
+    cout << " mid " << slow->data << endl;
+    return slow;
+}
+
+// Function for implementing the Binary
+// Search on linked list
+struct Node* binarySearch(Node *head, int value)
+{
+    struct Node* start = head;
+    struct Node* last = NULL;
+ 
+    do
+    {
+
+        // Find middle
+        Node* mid = middle(start, last);
+        
+        // If middle is empty
+        if (mid == NULL){
+            return NULL;
+        }
+ 
+        // If value is present at middle
+        if (mid -> data == value)
+            return mid;
+ 
+        // If value is more than mid
+        else if (mid -> data < value)
+            start = mid -> next;
+ 
+        // If the value is less than mid.
+        else
+            last = mid;
+ 
+    } while (last == NULL ||
+             last != start);
+ 
+    // value not present
+    return NULL;
+}
+
 // Function to sort a linked list using selection
 // sort algorithm by swapping the next pointers
 Node* selectionSort(Node* head)
@@ -175,9 +240,19 @@ int main()
     head->next->next->next->next->next->next->next->next = newNode(8);
     head->next->next->next->next->next->next->next->next->next = newNode(5);
   
+    cout<<"Sorted Item"<<endl;
     head = selectionSort(head);
   
     printList(head);
+
+    cout<<endl;
+
+    cout<<"Sorting"<<endl;
+
+    if (binarySearch(head, 2) == NULL)
+        printf("Value not present\n");
+    else
+        printf("Present");
   
     return 0;
 }
