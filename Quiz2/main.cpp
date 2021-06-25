@@ -24,9 +24,11 @@ Node* newNode(int val)
 // function to find out middle element
 struct Node* middle(Node* start, Node* last)
 {
-    cout << "first " << start->data;
-    if (start == NULL)
+    if (start == NULL) {
         return NULL;
+    } else {
+        cout << "first " << start -> data;
+    }
  
     struct Node* slow = start;
     struct Node* fast = start -> next;
